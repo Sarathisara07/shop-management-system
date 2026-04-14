@@ -49,7 +49,7 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB local connection successful'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Backend server with Socket.io running on http://localhost:${PORT}`);
   if (process.env.GEMINI_API_KEY) {
