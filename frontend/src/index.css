@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Common Tokens */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --accent-color: #6366f1;
+  --accent-hover: #4f46e5;
+  --accent-glow: rgba(99, 102, 241, 0.4);
+  --success: #10b981;
+  --danger: #ef4444;
+  
+  /* Light Theme (Default) */
+  --bg-primary: #f1f5f9;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.7);
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --glass-blur: 12px;
+  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+}
+
+.dark {
+  /* Dark Theme */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-card: rgba(30, 41, 59, 0.7);
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05), transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.05), transparent 40%);
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+input, button, select {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--glass-shadow);
+  transition: background 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dark .input-field {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+select.input-field option {
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-hover));
+  color: white;
+  padding: 14px 24px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  box-shadow: 0 4px 14px var(--accent-glow);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.btn-danger:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(to right, #818cf8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes fadeInSlideUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-enter {
+  animation: fadeInSlideUp 0.4s ease forwards;
+}
+
+/* Base App Layout */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 70px; /* Space for mobile nav */
+}
+
+@media (min-width: 768px) {
+  .app-container {
+    flex-direction: row;
+    padding-bottom: 0;
+  }
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding: 16px;
+  }
+}
